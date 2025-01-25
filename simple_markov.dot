@@ -1,0 +1,28 @@
+/*
+Based on sample code
+`make` builds a png; `make svg` builds an svg
+ */
+
+digraph finite_state_machine {
+	fontname="Helvetica,Arial,sans-serif"
+	node [fontname="Helvetica,Helvetica,sans-serif"]
+	edge [fontname="Helvetica,Helvetica,sans-serif"]
+	rankdir=LR;
+	node [shape = circle];
+	_ -> A [label = "0.5"];
+	_ -> L [label = "0.5"];
+	A -> M [label = "0.4"];
+	A -> L [label = "0.6"];
+	M -> _ [label = "0.8"];
+	M -> "!" [label = "0.2"];
+	L -> I [label = "1"];
+	I -> _ [label = "0.2"];
+	I -> N [label = "0.25"];
+	I -> V [label = "0.55"];
+	V -> E [label = "1"];
+	N -> E [label = "1"];
+	E -> "!" [label = "1"];
+	"!" -> _ [label = "0.7"];
+	"!" -> I [label = "0.2"];
+	"!" -> "!" [label = "0.1"];
+}
