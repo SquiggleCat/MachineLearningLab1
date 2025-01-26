@@ -15,9 +15,13 @@ class Markov:
             'E':[(100, '!')],
             '!':[(70, ' '), (20, 'I'), (10, '!')]
         }
+    '''
+    Return the current state and follow an arrow to the next state
+    '''
     def advance(self):
-        self.state = choose(self.rep[self.state])
-        return self.state
+        current = self.state
+        self.state = choose(self.rep[current])
+        return current
 
 '''
 Given a list of possible states and their respective weights, return one state.
