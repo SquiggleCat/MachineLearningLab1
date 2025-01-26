@@ -31,7 +31,7 @@ def choose(list):
     # "unzip" the (weight, state) pairs into two lists
     weights, states = zip(*list, strict=True)
     # return a random (weighted) state
-    return random.choices(states, weights)
+    return random.choices(states, weights)[0] # returns a list with 1 element otherwise
 
 
 if __name__ == '__main__':
