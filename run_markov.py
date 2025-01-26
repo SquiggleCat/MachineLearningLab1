@@ -5,6 +5,7 @@ class Markov:
         self.state = 'I'
         # keys are current state, values are a list of possible next states
         self.rep = {
+            # probabilities are out of 100 so integers can be used
             ' ':[(50, 'A'), (50, 'L')],
             'A':[(40, 'M'), (60, 'L')],
             'M':[(80, ' '), (20, '!')],
@@ -27,17 +28,16 @@ class Markov:
 Given a list of possible states and their respective weights, return one state.
 '''
 def choose(list):
-    # probabilities are ints <= 100
-    rand = random.randrange(100)
-    cumulative_prob = 0
-    # check against each possible state and its weight
-    for weight, state in list:
-        cumulative_prob += weight
-        if rand < cumulative_prob: return state
+    # "unzip" the (weight, state) pairs into two lists
+    weights, states = zip(*list, strict=True)
+    # return a random (weighted) state
+    return random.choices(states, weights)
+
 
 if __name__ == '__main__':
-    markov = Markov()
-    for _ in range(10):
-        for __ in range(100):
+    markov = Markov() # set up the Markov chain
+    for _ in range(10): # 10 lines
+        for __ in range(100): # 100 chars each
+            # print the current state, move to the next
             print(markov.advance(), end='')
         print()
