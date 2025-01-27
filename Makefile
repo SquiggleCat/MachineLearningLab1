@@ -1,7 +1,7 @@
-all: markov markov.png
-	
 markov:
 	python3 run_markov.py
+all: markov markov.png
+	
 markov.png: simple_markov.dot
 	dot -Tpng simple_markov.dot > markov.png
 markov.svg: simple_markov.dot
